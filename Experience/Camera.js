@@ -57,7 +57,7 @@ export default class Camera{
         //this.scene.add( gridHelper );
 
         const axesHelper = new THREE.AxesHelper( 10);
-        this.scene.add( axesHelper );
+        //this.scene.add( axesHelper );
     }
 
     setOrbitcontrols()

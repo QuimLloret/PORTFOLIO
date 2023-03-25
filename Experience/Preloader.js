@@ -20,7 +20,7 @@ export default class Preloader extends EventEmitter{
 
         this.world.on("worldready", () => {
             this.setAssets();
-            this.playIntro();
+            //this.playIntro();
         });
 
     }
@@ -212,6 +212,8 @@ export default class Preloader extends EventEmitter{
         document.querySelector(".page").style.overflow = "none";
         window.addEventListener("touchstart", this.touchStart);
         window.addEventListener("touchmove", this.touchMove);
+
+        this.emit("preloader-end");
     }
 
 }

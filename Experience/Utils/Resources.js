@@ -9,6 +9,7 @@ export default class Resources extends EventEmitter{
         super();
         this.experience = new Experience();
         this.renderer = this.experience.renderer;
+        this.camera = this.experience.camera.ortographicCamera;
 
         this.assets = assets;
 
@@ -16,10 +17,14 @@ export default class Resources extends EventEmitter{
         this.queue = this.assets.length;
         this.loaded = 0;
 
+        this.audioLoader = null;
+        this.sound = null;
+
         this.setLoaders();
+        //this.setMusic();
         this.startLoading();
     }
- 
+
     setLoaders()
     {
         this.loaders = {};
@@ -46,7 +51,7 @@ export default class Resources extends EventEmitter{
 
                 this.video[asset.name] = document.createElement("video");
                 this.video[asset.name].src = asset.path;
-                this.video[asset.name].muted = true;
+                this.video[asset.name].muted = false;
                 this.video[asset.name].playsInLine = true;
                 this.video[asset.name].autoplay = true;
                 this.video[asset.name].loop = true;
@@ -60,10 +65,34 @@ export default class Resources extends EventEmitter{
                 this.videoTexture[asset.name].encoding = THREE.sRGBEncoding;
 
                 this.singleAssetLoaded(asset, this.videoTexture[asset.name]);
-
             }
         }
     }
+
+    setMusic() {
+        const listener = new THREE.AudioListener();
+        this.camera.add(listener);
+      
+        // create a global audio source
+        this.sound = new THREE.Audio(listener);
+      
+        // load a sound and set it as the Audio object's buffer
+        this.audioLoader = new THREE.AudioLoader();
+        this.audioLoader.load('audios/beyond.mp3', (buffer) => {
+          this.sound.setBuffer(buffer);
+          this.sound.setLoop(true);
+          this.sound.setVolume(0.10);
+      
+          // Resume the AudioContext if it's suspended
+          if (listener.context.state === 'suspended') {
+            listener.context.resume().then(() => {
+              this.sound.play();
+            });
+          } else {
+            this.sound.play();
+          }
+        });
+      }
 
     singleAssetLoaded(asset, file)
     {

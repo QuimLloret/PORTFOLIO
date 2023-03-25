@@ -9,6 +9,10 @@ html, body{
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  cursor: url("images/sAxCursor.png") 32 32, pointer;
+}
+
 h1,
 section,
 p,
@@ -61,6 +65,57 @@ svg{
   height: 100%;
 }
 
+/* scroll to top --------------------------------------------- */
+
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999999999;
+  background-color: transparent;
+  color: var(--color-pink);;
+  border: 3px solid var(--color-pink);; /* Add a white border */
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
+.scroll-to-top:hover {
+  opacity: 1;
+}
+
+/* INTRO ------------------------------------------------------ */
+
+.intro-panel {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-background-light);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-button {
+  padding: 20px 40px;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #000000; /* Set initial font color */
+  /* Add any other button styles you prefer */
+}
+
+.start-button:hover {
+  border-color: var(--color-pink-light); /* Set border color to white when hovered */
+  color: var(--color-pink-light); /* Set font color to white when hovered */
+}
 
 /* Page Itself ------------------------------------------------ */
 
@@ -89,12 +144,21 @@ svg{
 }
 
 .sun-wrapper,
-.moon-wrapper{
+.moon-wrapper,
+.mute-wrapper{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: var(--color-text);
+}
+
+.mute-wrapper{
+  background-color: transparent;
+  cursor: pointer;
+  position:relative;
+  border: none;
+  margin-right: 45px;
 }
 
 .toggle-button{
@@ -130,6 +194,80 @@ svg{
   left: 28px;
 }
 
+/* Imatges ----------------------------------------------------------- */
+
+.imatges-metalls{
+  width: 15%; 
+  height: auto;
+  margin-right: 35px;
+}
+
+.imatges-metalls2{
+  width: 12%; 
+  height: auto;
+  margin-right: 35px;
+}
+
+.imatges-videojocs{
+  width: 35%;
+  height: auto;
+  margin-left: 25px;
+}
+
+.imatges-videojocs2{
+  width: 20%;
+  height: auto;
+  margin-left: 200px;
+}
+
+.imatge-final-boss{
+  width: 100%;
+  height: auto;
+  
+}
+
+.imatge-album{
+  margin-left: 55px;
+}
+
+.first-section.section.left.imageBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh; /* Adjust this value according to your needs */
+}
+
+.image-container {
+  text-align: center;
+  margin-right: 50px;
+}
+
+.centered-image {
+  display: inline-block;
+  margin-bottom: 0;
+}
+/* Audios ----------------------------------------------------------- */
+
+/* Fletxa amunt ----------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
 
 /* Section Formatting ------------------------------------------------ */
 
@@ -141,6 +279,15 @@ svg{
 .section{
   position: relative;
   width: 50%;
+  padding: 1000px 4%;
+  margin: 0;
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+.section-thin{
+  position: relative;
+  width: 30%;
   padding: 1000px 4%;
   margin: 0;
   background-color: var(--color-background);
@@ -184,6 +331,20 @@ svg{
   line-height: 2;
   margin-top: 18px;
   color: var(--color-text);
+}
+
+.section-text-quote{
+  font-style: italic;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 18px;
+  color: var(--color-text);
+}
+
+.centered-text{
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 /* Fancy Decoration Part of Section ------------------------------ */
@@ -271,6 +432,19 @@ svg{
 .hero-main-title{
   font-size: 64px;
   color: var(--color-text);
+}
+
+.hero-main-description span,
+.hero-second-subheading span,
+.hero-main-title span {
+  cursor: pointer; /* Change cursor to pointer when hovering over a letter */
+  transition: color 0.2s;
+}
+
+.hero-main-title span:hover,
+.hero-main-description span:hover,
+.hero-second-subheading span:hover {
+  color: transparent;
 }
 
 .hero-main-description{
