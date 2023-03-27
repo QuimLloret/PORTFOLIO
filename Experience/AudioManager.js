@@ -1,5 +1,4 @@
 import { EventEmitter } from "events"
-import Resources from "./utils/Resources.js"
 import Experience from "./Experience.js"
 
 export default class AudioManager extends EventEmitter{
