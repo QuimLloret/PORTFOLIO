@@ -78,7 +78,7 @@ export default class Resources extends EventEmitter{
       
         // load a sound and set it as the Audio object's buffer
         this.audioLoader = new THREE.AudioLoader();
-        this.audioLoader.load('/audios/beyond.mp3', (buffer) => {
+        this.audioLoader.load('/audios/buttons/beyond.mp3', (buffer) => {
           this.sound.setBuffer(buffer);
           this.sound.setLoop(true);
           this.sound.setVolume(0.10);
