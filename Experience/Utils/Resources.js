@@ -48,6 +48,7 @@ export default class Resources extends EventEmitter{
             {
                 this.video = {};
                 this.videoTexture = {};
+                this.assetNameVideo = asset.name;
 
                 this.video[asset.name] = document.createElement("video");
                 this.video[asset.name].src = asset.path;
@@ -55,7 +56,7 @@ export default class Resources extends EventEmitter{
                 this.video[asset.name].playsInLine = true;
                 this.video[asset.name].autoplay = true;
                 this.video[asset.name].loop = true;
-                this.video[asset.name].play;
+                //this.video[asset.name].play;
 
                 this.videoTexture[asset.name] = new THREE.VideoTexture(this.video[asset.name]);
                 this.videoTexture[asset.name].flipY = false;
@@ -79,6 +80,7 @@ export default class Resources extends EventEmitter{
         // load a sound and set it as the Audio object's buffer
         this.audioLoader = new THREE.AudioLoader();
         this.audioLoader.load('/audios/bgMusic.wav', (buffer) => {
+          console.log(buffer);
           this.sound.setBuffer(buffer);
           this.sound.setLoop(true);
           this.sound.setVolume(0.10);
@@ -87,9 +89,11 @@ export default class Resources extends EventEmitter{
           if (listener.context.state === 'suspended') {
             listener.context.resume().then(() => {
               this.sound.play();
+              this.video[this.assetNameVideo].play;
             });
           } else {
             this.sound.play();
+            this.video[this.assetNameVideo].play;
           }
         });
       }
