@@ -227,13 +227,45 @@ export default class Controls{
                         return Math.PI / 4;
                     },
                 },"same");
-                /*this.sixthMoveTimeline.to(this.room.scale, {
-                    x: 1,
-                    y: 1,
-                    z: 1,
+
+                // Seventh section ----------------------------------------------
+                this.seventhMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".seventh-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.seventhMoveTimeline.to(this.room.rotation, {
+                    z: ()=>{
+                        return -Math.PI / 16;
+                    },
+                    x: ()=>{
+                        return -Math.PI / 16;
+                    },
+                },"same");
+                this.seventhMoveTimeline.to(this.room.scale, {
+                    x: 0.6,
+                    y: 0.6,
+                    z: 0.6,
                     },
                     "same"
-                );*/
+                );
+                this.seventhMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 0,
+                    x: 4,
+                    z: -7,
+                    
+                }, "same");
+                
+                /*this.seventhMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 0,
+                    x: 2,
+                    z: -2,
+                }, "same");*/
+                
             },
 
             // Mobile
