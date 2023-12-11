@@ -276,6 +276,7 @@ export default class Controls{
                 this.room.scale.set(0.07, 0.07, 0.07);
                 this.room.position.set(0,0,0);
 
+                /*
                 // First section ----------------------------------------------
                 this.firstMoveTimeline = new GSAP.timeline({
                     scrollTrigger:{
@@ -321,7 +322,186 @@ export default class Controls{
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     }
+                });*/
+
+                // First section ----------------------------------------------
+                this.firstMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".first-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
                 });
+                this.firstMoveTimeline.to(this.room.position, {
+                    x: ()=>{
+                        return this.sizes.width * 0.0014;
+                    }
+                });
+
+                // Second section ----------------------------------------------
+                this.secondMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".second-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.secondMoveTimeline.to(this.room.position, {
+                    x: ()=>{
+                        return 1;
+                    },
+                    z: ()=>{
+                        return this.sizes.height * 0.0032;
+                    }
+                    },
+                    "same"
+                );
+                this.secondMoveTimeline.to(this.room.scale, {
+                    x: 0.5,
+                    y: 0.5,
+                    z: 0.5,
+                    },
+                    "same"
+                );
+                this.secondMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 0.75,
+                    x: -1.5,
+                    z: -3,
+                    
+                },"same");
+
+                // Third section ----------------------------------------------
+                this.thirdMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".third-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.thirdMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 4,
+                    
+                }, "same");
+
+                // Fourth section ----------------------------------------------
+                this.fourthMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".fourth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.fourthMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: -2.5,
+                    x: 4,
+                    
+                }, "same");
+
+                // Fifth section ----------------------------------------------
+                this.fifthMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".fifth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.fifthMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 0,
+                    x: 2,
+                    z: -10,
+                    
+                }, "same");
+                this.fifthMoveTimeline.to(this.camera.ortographicCamera.rotation, {
+                    y: ()=>{
+                        return -Math.PI / 4.5;
+                    },
+                },"same");
+                this.fifthMoveTimeline.to(this.camera.ortographicCamera.rotation, {
+                    x: ()=>{
+                        return -Math.PI / 8;
+                    },
+                },"same");
+                this.fifthMoveTimeline.to(this.camera.ortographicCamera.rotation, {
+                    z: ()=>{
+                        return -Math.PI / 12;
+                    },
+                },"same");
+                this.fifthMoveTimeline.to(this.room.position, {
+                    x: ()=>{
+                        return -7;
+                    },
+                },"same");
+                this.fifthMoveTimeline.to(this.room.scale, {
+                    x: 0.8,
+                    y: 0.8,
+                    z: 0.8,
+                    },
+                    "same"
+                );
+                // Sixth section ----------------------------------------------
+                this.sixthMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".sixth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.sixthMoveTimeline.to(this.room.rotation, {
+                    x: ()=>{
+                        return Math.PI / 4;
+                    },
+                },"same");
+                this.sixthMoveTimeline.to(this.room.rotation, {
+                    z: ()=>{
+                        return Math.PI / 4;
+                    },
+                },"same");
+
+                // Seventh section ----------------------------------------------
+                this.seventhMoveTimeline = new GSAP.timeline({
+                    scrollTrigger:{
+                        trigger: ".seventh-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.seventhMoveTimeline.to(this.room.rotation, {
+                    z: ()=>{
+                        return -Math.PI / 16;
+                    },
+                    x: ()=>{
+                        return -Math.PI / 16;
+                    },
+                },"same");
+                this.seventhMoveTimeline.to(this.room.scale, {
+                    x: 0.6,
+                    y: 0.6,
+                    z: 0.6,
+                    },
+                    "same"
+                );
+                this.seventhMoveTimeline.to(this.camera.ortographicCamera.position, {
+                    y: 0,
+                    x: 4,
+                    z: -7,
+                    
+                }, "same");
+                
+
             },
               
             "all": () => {
